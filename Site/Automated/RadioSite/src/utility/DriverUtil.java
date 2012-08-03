@@ -25,6 +25,8 @@ import com.thoughtworks.selenium.Wait;
 import testng.MethodConfiguration;
 
 public class DriverUtil {
+
+	public static final String ELLIPSIS = "\u2026"
 	
 	public static String inputStreamAsString(InputStream stream)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
@@ -43,7 +45,7 @@ public class DriverUtil {
 	public static String formatDisplayName(String name){
 		
 		if (name.length() > 19){
-			return name.substring(0, 19) + "…";
+			return name.substring(0, 19) + ELLIPSIS;
 		}
 		
 		return name;
