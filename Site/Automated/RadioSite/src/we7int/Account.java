@@ -34,4 +34,10 @@ public class Account {
 		contactLink.click();
 		return PageFactory.initElements(driver, Contact.class);
 	}
+//NEW
+	public Promotions getPromotionsTab(){
+		promotionsLink.click();
+		return PageFactory.initElements(driver, Promotions.class);
+	}
+//NEW
 }

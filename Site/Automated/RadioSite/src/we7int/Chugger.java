@@ -23,6 +23,17 @@ public class Chugger {
 	@FindBy(className = "play-next")
 	private WebElement skip;
 	
+//NEW
+	@FindBy(css= "div#now-playing-like-bar ul.like-bar li.like-button-item div.like-button span.like-button-text")
+	private WebElement share;
+	
+	@FindBy(className = "main-action")
+	private WebElement playPause;
+
+	public Chugger(WebDriver driver){
+        this.driver = driver;
+   	}
+//NEW
 	private float getWidth(String atttribute){
 			
 		float width=0;
@@ -54,7 +65,12 @@ public class Chugger {
 	public void skip(){
 		skip.click();
 	}
-	
+//NEW
+	public void playPause(){
+		System.out.println("clicking play/pause!");
+		playPause.click();
+	}
+//NEW
 	private float getPlayerwidth(){
 		return getWidth(playedBar.getAttribute("style"));
 	}
@@ -62,6 +78,12 @@ public class Chugger {
 	private float getLoaderwidth(){
 		return getWidth(loaderBar.getAttribute("style"));
 	}
+//NEW (The Pagefactory is needed for ln37 of ShareTest)
+	public Share getShareVeil(){
+		share.click();
+		return PageFactory.initElements(driver, Share.class);
+	}
+//NEW
 	
 	public boolean isPlaying(int milliseconds, int interval) throws InterruptedException{
 		
